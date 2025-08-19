@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚨 Hospital Emergency Codes 🚨</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border-radius: 12px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+    .code { font-size: 22px; margin-bottom: 10px; }
+    .dept { font-size: 16px; }
+
+    /* Colors for each code */
+    .red { background: #e63946; }
+    .blue { background: #457b9d; }
+    .yellow { background: #f1c40f; color: black; }
+    .violet { background: #9b59b6; }
+    .pink { background: #ff6b81; }
+    .white { background: #ecf0f1; color: black; }
+    .brown { background: #8d6e63; }
+    .black { background: #2d3436; }
+    .orange { background: #e67e22; }
+    .green { background: #27ae60; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .dept-btn {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .close {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚨 Emergency Codes / आपतकालीन कोड 🚨</h1>// Title main
+    <div class="grid">
+  <div class="card red" onclick="openModal(1,'Fire / Smoke / आगलागी')">
+    <div class="code">Code 001</div>
+    <div class="dept">Fire / Smoke / आगलागी</div>
+  </div>
+  <div class="card blue" onclick="openModal(2,'Cardiac Arrest / मुटुको आपतकाल')">
+    <div class="code">Code 002</div>
+    <div class="dept">Cardiac Arrest / मुटुको आपतकाल</div>
+  </div>
+  <div class="card yellow" onclick="openModal(3,'Hazardous Spill / हानिकारक पदार्थ फैलावट')">
+    <div class="code">Code 003</div>
+    <div class="dept">Hazardous Spill / हानिकारक पदार्थ फैलावट</div>
+  </div>
+  <div class="card violet" onclick="openModal(4,'Patient/Family Violence / बिरामी वा परिवार हिंसा')">
+    <div class="code">Code 004</div>
+    <div class="dept">Patient/Family Violence / बिरामी वा परिवार हिंसा</div>
+  </div>
+  <div class="card pink" onclick="openModal(5,'Child Abduction / बच्चा हराएको सूचना')">
+    <div class="code">Code 005</div>
+    <div class="dept">Child Abduction / बच्चा हराएको सूचना</div>
+  </div>
+  <div class="card white" onclick="openModal(6,'Mob Violence / भिड हिंसात्मक भएको')">
+    <div class="code">Code 006</div>
+    <div class="dept">Mob Violence / भिड हिंसात्मक भएको</div>
+  </div>
+  <div class="card brown" onclick="openModal(7,'External Mass Casualty / बाह्य ठूलो दुर्घटना')">
+    <div class="code">Code 007</div>
+    <div class="dept">External Mass Casualty / बाह्य ठूलो दुर्घटना</div>
+  </div>
+  <div class="card black" onclick="openModal(8,'Bomb Threat / बमको खतरा')">
+    <div class="code">Code 008</div>
+    <div class="dept">Bomb Threat / बमको खतरा</div>
+  </div>
+  <div class="card orange" onclick="openModal(9,'Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल')">
+    <div class="code">Code 009</div>
+    <div class="dept">Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल</div>
+  </div>
+  <div class="card green" onclick="openModal(10,'All Clear / अवस्था सामान्य भएको सूचना')">
+    <div class="code">Code 010</div>
+    <div class="dept">All Clear / अवस्था सामान्य भएको सूचना</div>
+  </div>
+</div>
+
+
+  <!-- Modal -->
+  <div class="modal" id="deptModal">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <p>Select Department (विभाग रोज्नुहोस्):</p>
+      <div id="deptButtons"></div>
+      <button class="close" onclick="closeModal()">Close / बन्द गर्नुहोस्</button>
+    </div>
+  </div>
+
+  <script>
+    const departments = [
+      "Emergency / आकस्मिक",
+      "Surgery / शल्यक्रिया",
+      "ICU / आई.सी.यू.",
+      "Pediatrics / बालरोग",
+      "Gynecology / स्त्रीरोग",
+      "Orthopedics / अस्थिरोग",
+      "Laboratory / प्रयोगशाला",
+      "Radiology / रेडियोलोजी",
+      "Pharmacy / औषधिालय",
+      "Administration / प्रशासन"
+    ];
+
+    function openModal(code, label) {
+      document.getElementById('deptModal').style.display = 'flex';
+      document.getElementById('modalTitle').innerText = `Code ${String(code).padStart(3,'0')} - ${label}`;
+      let deptHTML = '';
+      departments.forEach(d => {
+        deptHTML += `<button class='dept-btn' style='background:${getColor(code)}' onclick="speakDept(${code}, '${d}')">${d}</button>`;
+      });
+      document.getElementById('deptButtons').innerHTML = deptHTML;
+    }
+
+    function closeModal() {
+      document.getElementById('deptModal').style.display = 'none';
+    }
+
+    // Speak only code + department, loop ~20 seconds
+    // Speak only code + English (no Nepali, no "/")
+function speakDept(code, dept) {
+  // Remove everything after "/" to keep only English
+  let cleanDept = dept.split('/')[0].trim();
+
+  let text = `Attention please! Code ${String(code).padStart(3,'0')}, Department: ${cleanDept}`;
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = 'en-US';
+
+  let startTime = Date.now();
+  function repeatSpeech() {
+    if (Date.now() - startTime < 20000) { // ~20 seconds loop
+      window.speechSynthesis.speak(speech);
+      speech.onend = repeatSpeech;
+    }
+  }
+  repeatSpeech();
+}
+
+
+    function getColor(code){
+      switch(code){
+        case 1: return 'red';
+        case 2: return 'blue';
+        case 3: return 'gold';
+        case 4: return 'violet';
+        case 5: return 'pink';
+        case 6: return 'gray';
+        case 7: return 'brown';
+        case 8: return 'black';
+        case 9: return 'orange';
+        case 10: return 'green';
+        default: return 'gray';
+      }
+    }
+  </script>
+</body>
+</html>
