@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +10,51 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f7fb;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
     }
+
+    header {
+      width: 100%;
+      background: #FFFCEA;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    header img {
+      max-width: 80px;
+      margin-bottom: 10px;
+    }
+    header h3 {
+      margin: 0;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    header h2 {
+      margin: 5px 0 0;
+      color: #e63946;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
     .container {
+      flex: 1;
       max-width: 1200px;
       padding: 20px;
+      width: 100%;
+      margin: 0 auto;
     }
     h1 {
       text-align: center;
-      margin-bottom: 30px;
+      margin: 30px 0;
       color: #333;
+      font-size: 28px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -46,7 +77,7 @@
     .code { font-size: 22px; margin-bottom: 10px; }
     .dept { font-size: 16px; }
 
-    /* Colors for each code */
+    /* Colors */
     .red { background: #e63946; }
     .blue { background: #457b9d; }
     .yellow { background: #f1c40f; color: black; }
@@ -68,13 +99,14 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
+      z-index: 999;
     }
     .modal-content {
       background: #fff;
       padding: 20px;
       border-radius: 12px;
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
       text-align: center;
     }
     .dept-btn {
@@ -97,53 +129,86 @@
       color: #fff;
       cursor: pointer;
     }
+
+    footer {
+      background: #004064;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+    footer .icons {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      header h3 { font-size: 13px; }
+      header h2 { font-size: 16px; }
+      h1 { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
+  <header>
+    <img src="logo.png" alt="Hospital Logo">
+    <h3>
+      गण्डकी प्रदेश सरकार<br>
+      स्वास्थ्य मन्त्रालय<br>
+      प्रादेशिक स्वास्थ्य निर्देशनालय
+    </h3>
+    <h2>प्रदेश अस्पताल, कुश्मा, पर्वत</h2>
+  </header>
+
   <div class="container">
     <h1>🚨 Emergency Codes / आपतकालीन कोड 🚨</h1>
     <div class="grid">
-  <div class="card red" onclick="openModal(1,'Fire / Smoke / आगलागी')">
-    <div class="code">Code 001</div>
-    <div class="dept">Fire / Smoke / आगलागी</div>
+      <div class="card red" onclick="openModal(1,'Fire / Smoke / आगलागी')">
+        <div class="code">Code 001</div>
+        <div class="dept">Fire / Smoke / आगलागी</div>
+      </div>
+      <div class="card blue" onclick="openModal(2,'Cardiac Arrest / मुटुको आपतकाल')">
+        <div class="code">Code 002</div>
+        <div class="dept">Cardiac Arrest / मुटुको आपतकाल</div>
+      </div>
+      <div class="card yellow" onclick="openModal(3,'Hazardous Spill / हानिकारक पदार्थ फैलावट')">
+        <div class="code">Code 003</div>
+        <div class="dept">Hazardous Spill / हानिकारक पदार्थ फैलावट</div>
+      </div>
+      <div class="card violet" onclick="openModal(4,'Patient/Family Violence / बिरामी वा परिवार हिंसा')">
+        <div class="code">Code 004</div>
+        <div class="dept">Patient/Family Violence / बिरामी वा परिवार हिंसा</div>
+      </div>
+      <div class="card pink" onclick="openModal(5,'Child Abduction / बच्चा हराएको सूचना')">
+        <div class="code">Code 005</div>
+        <div class="dept">Child Abduction / बच्चा हराएको सूचना</div>
+      </div>
+      <div class="card white" onclick="openModal(6,'Mob Violence / भिड हिंसात्मक भएको')">
+        <div class="code">Code 006</div>
+        <div class="dept">Mob Violence / भिड हिंसात्मक भएको</div>
+      </div>
+      <div class="card brown" onclick="openModal(7,'External Mass Casualty / बाह्य ठूलो दुर्घटना')">
+        <div class="code">Code 007</div>
+        <div class="dept">External Mass Casualty / बाह्य ठूलो दुर्घटना</div>
+      </div>
+      <div class="card black" onclick="openModal(8,'Bomb Threat / बमको खतरा')">
+        <div class="code">Code 008</div>
+        <div class="dept">Bomb Threat / बमको खतरा</div>
+      </div>
+      <div class="card orange" onclick="openModal(9,'Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल')">
+        <div class="code">Code 009</div>
+        <div class="dept">Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल</div>
+      </div>
+      <div class="card green" onclick="openModal(10,'All Clear / अवस्था सामान्य भएको सूचना')">
+        <div class="code">Code 010</div>
+        <div class="dept">All Clear / अवस्था सामान्य भएको सूचना</div>
+      </div>
+    </div>
   </div>
-  <div class="card blue" onclick="openModal(2,'Cardiac Arrest / मुटुको आपतकाल')">
-    <div class="code">Code 002</div>
-    <div class="dept">Cardiac Arrest / मुटुको आपतकाल</div>
-  </div>
-  <div class="card yellow" onclick="openModal(3,'Hazardous Spill / हानिकारक पदार्थ फैलावट')">
-    <div class="code">Code 003</div>
-    <div class="dept">Hazardous Spill / हानिकारक पदार्थ फैलावट</div>
-  </div>
-  <div class="card violet" onclick="openModal(4,'Patient/Family Violence / बिरामी वा परिवार हिंसा')">
-    <div class="code">Code 004</div>
-    <div class="dept">Patient/Family Violence / बिरामी वा परिवार हिंसा</div>
-  </div>
-  <div class="card pink" onclick="openModal(5,'Child Abduction / बच्चा हराएको सूचना')">
-    <div class="code">Code 005</div>
-    <div class="dept">Child Abduction / बच्चा हराएको सूचना</div>
-  </div>
-  <div class="card white" onclick="openModal(6,'Mob Violence / भिड हिंसात्मक भएको')">
-    <div class="code">Code 006</div>
-    <div class="dept">Mob Violence / भिड हिंसात्मक भएको</div>
-  </div>
-  <div class="card brown" onclick="openModal(7,'External Mass Casualty / बाह्य ठूलो दुर्घटना')">
-    <div class="code">Code 007</div>
-    <div class="dept">External Mass Casualty / बाह्य ठूलो दुर्घटना</div>
-  </div>
-  <div class="card black" onclick="openModal(8,'Bomb Threat / बमको खतरा')">
-    <div class="code">Code 008</div>
-    <div class="dept">Bomb Threat / बमको खतरा</div>
-  </div>
-  <div class="card orange" onclick="openModal(9,'Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल')">
-    <div class="code">Code 009</div>
-    <div class="dept">Internal Casualty / अस्पतालभित्रको चोटपटक आपतकाल</div>
-  </div>
-  <div class="card green" onclick="openModal(10,'All Clear / अवस्था सामान्य भएको सूचना')">
-    <div class="code">Code 010</div>
-    <div class="dept">All Clear / अवस्था सामान्य भएको सूचना</div>
-  </div>
-</div>
+
   <!-- Modal -->
   <div class="modal" id="deptModal">
     <div class="modal-content">
@@ -153,6 +218,16 @@
       <button class="close" onclick="closeModal()">Close / बन्द गर्नुहोस्</button>
     </div>
   </div>
+
+  <footer>
+    © 2025 प्रदेश अस्पताल, कुश्मा, पर्वत | All Rights Reserved
+    <div class="icons">
+      📞 067-420414 / 18105000141 &nbsp;|&nbsp;
+      🌐 <a href="https://parbathospital.gandaki.gov.np/" target="_blank">parbathospital.gandaki.gov.np</a> &nbsp;|&nbsp;
+      📧 <a href="mailto:parbathospital@gmail.com">parbathospital@gmail.com</a>
+    </div>
+  </footer>
+
   <script>
     const departments = [
       "Emergency / आकस्मिक",
@@ -166,7 +241,11 @@
       "Pharmacy / औषधिालय",
       "Administration / प्रशासन"
     ];
+
+    let speakingState = null;
+
     function openModal(code, label) {
+      stopSpeaking();
       document.getElementById('deptModal').style.display = 'flex';
       document.getElementById('modalTitle').innerText = `Code ${String(code).padStart(3,'0')} - ${label}`;
       let deptHTML = '';
@@ -175,26 +254,49 @@
       });
       document.getElementById('deptButtons').innerHTML = deptHTML;
     }
+
     function closeModal() {
       document.getElementById('deptModal').style.display = 'none';
+      stopSpeaking();
     }
-    // Speak only code + department, loop ~40 seconds
-   function speakDept(code, dept) {
-  let cleanDept = dept.split('/')[0].trim();
 
-  let text = `Attention please! Code ${String(code).padStart(3,'0')}, ${cleanDept}`;
-  const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = 'en-US';
-
-  let startTime = Date.now();
-  function repeatSpeech() {
-    if (Date.now() - startTime < 40000) { // ~40 seconds loop
-      window.speechSynthesis.speak(speech);
-      speech.onend = repeatSpeech;
+    function stopSpeaking() {
+      window.speechSynthesis.cancel();
+      speakingState = null;
     }
-  }
-  repeatSpeech();
-}
+
+    function speakDept(code, dept) {
+      stopSpeaking();
+      let cleanDeptEN = dept.split('/')[0].trim();
+      let cleanDeptNP = dept.split('/')[1] ? dept.split('/')[1].trim() : '';
+
+      let textEN = `Attention please! Code ${String(code).padStart(3,'0')}, ${cleanDeptEN}`;
+      let textNP = `कृपया ध्यान दिनुहोस्! कोड ${String(code).padStart(3,'0')}, ${cleanDeptNP}`;
+
+      function speakText(text, lang) {
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        return utterance;
+      }
+
+      let startTime = Date.now();
+
+      function repeatSpeech() {
+        if (Date.now() - startTime < 40000) {
+          let enSpeech = speakText(textEN, 'en-US');
+          let npSpeech = speakText(textNP, 'ne-NP');
+
+          enSpeech.onend = () => window.speechSynthesis.speak(npSpeech);
+          npSpeech.onend = repeatSpeech;
+
+          window.speechSynthesis.speak(enSpeech);
+        }
+      }
+
+      speakingState = true;
+      repeatSpeech();
+    }
+
     function getColor(code){
       switch(code){
         case 1: return 'red';
@@ -210,6 +312,14 @@
         default: return 'gray';
       }
     }
+
+    // Stop on outside click or ESC
+    window.addEventListener('click', e => {
+      if (e.target.id === 'deptModal') closeModal();
+    });
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 </body>
 </html>
